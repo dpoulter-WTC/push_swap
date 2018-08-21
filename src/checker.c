@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                   _ _ _ ____                               */
-/*                                   | | | |___                               */
-/*  checker.c                        |_|_| |___                               */
-/*                                        ___ _  _ _ _  _ _  _                */
-/*  By: coding <marvin@42.fr>              |  |__| | |\ | |_/                 */
-/*                                         |  |  | | | \| | \_                */
-/*  Created: 2018/08/03 21:55:41 b               ____ ____ ___  ____          */
-/*  Updated: 2018/08/21 11:20:14 b               |    |  | |  \ |___          */
-/*                                               |___ |__| |__/ |___ .co.za   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/21 11:54:52 by dpoulter          #+#    #+#             */
+/*   Updated: 2018/08/21 11:56:31 by dpoulter         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker.h"
@@ -50,9 +50,9 @@ void	error_code(int status)
 
 void	populate(char **argv, int argc, t_stack *a_head)
 {
-	int i;
-	int j;
-	char **split;
+	int		i;
+	int		j;
+	char	**split;
 
 	i = 0;
 	while (++i < argc)
@@ -72,8 +72,6 @@ int		main(int argc, char **argv)
 	int		f;
 	t_stack	*a_head;
 	t_stack	*b_head;
-	t_stack *test_a;
-	t_stack *test_b;
 
 	if (argc == 1)
 		error_code(0);
@@ -113,24 +111,6 @@ int		main(int argc, char **argv)
 			a_head = rrotate(a_head);
 			b_head = rrotate(b_head);
 		}
-		test_a = a_head;
-		test_b = b_head;
-		while (test_a)
-		{
-			fprintf(stdout, "%d ", test_a->val);
-			fflush(stdout);
-			test_a = test_a->next;
-		}
-			fprintf(stdout, "\n");
-			fflush(stdout);
-		while (test_b)
-		{
-			fprintf(stdout, "%d ", test_b->val);
-			fflush(stdout);
-			test_b = test_b->next;
-		}
-			fprintf(stdout, "\n");
-			fflush(stdout);
 	}
 	check_sorted(a_head, b_head);
 	return (0);

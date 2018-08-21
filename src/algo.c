@@ -1,13 +1,13 @@
 /* ************************************************************************** */
-/*                                   _ _ _ ____                               */
-/*                                   | | | |___                               */
-/*  algo.c                           |_|_| |___                               */
-/*                                        ___ _  _ _ _  _ _  _                */
-/*  By: coding <marvin@42.fr>              |  |__| | |\ | |_/                 */
-/*                                         |  |  | | | \| | \_                */
-/*  Created: 2018/08/20 18:54:11 b               ____ ____ ___  ____          */
-/*  Updated: 2018/08/20 20:29:28 b               |    |  | |  \ |___          */
-/*                                               |___ |__| |__/ |___ .co.za   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   algo.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/08/21 11:44:51 by dpoulter          #+#    #+#             */
+/*   Updated: 2018/08/21 11:45:35 by dpoulter         ###   ########.fr       */
+/*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
@@ -42,7 +42,7 @@ int		check_nb(t_stack *list)
 	return (0);
 }
 
-void		my_basic_algorithm(t_stack **a_head, t_stack **b_head)
+void	my_basic_algorithm(t_stack **a_head, t_stack **b_head)
 {
 	if (sort_list_nb(*a_head, *b_head) != 0)
 	{
