@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*  push_swap.h                      |_|_| |___                               */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 11:39:58 by dpoulter          #+#    #+#             */
-/*   Updated: 2018/08/21 11:44:00 by dpoulter         ###   ########.fr       */
+/*  Updated: 2018/08/21 14:57:29 b               |    |  | |  \ |___          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,6 @@ t_stack			*push(t_stack *head, t_stack **dst);
 t_stack			*rotate(t_stack *head);
 t_stack			*rrotate(t_stack *head);
 
-void			my_basic_algorithm(t_stack **a_head, t_stack **b_head);
+void			my_basic_algorithm(t_stack **a_head, t_stack **b_head, int i);
 
 #endif

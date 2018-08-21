@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*  push_swap.c                      |_|_| |___                               */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 11:56:40 by dpoulter          #+#    #+#             */
-/*   Updated: 2018/08/21 11:59:04 by dpoulter         ###   ########.fr       */
+/*  Updated: 2018/08/21 14:55:37 b               |    |  | |  \ |___          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,13 @@ int		main(int argc, char **argv)
 	populate(argv, argc, a_head);
 	a_head = remove_front(a_head);
 	a = a_head;
-	high = 1;
+	high = 0;
 	while (a->next)
 	{
-		high++;
+		if (a->val > high)
+			high = a->val;
 		a = a->next;
 	}
-	my_basic_algorithm(&a_head, &b_head);
+	my_basic_algorithm(&a_head, &b_head, high);
 	return (0);
 }

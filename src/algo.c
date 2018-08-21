@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo.c                                             :+:      :+:    :+:   */
+/*  algo.c                           |_|_| |___                               */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 11:44:51 by dpoulter          #+#    #+#             */
-/*   Updated: 2018/08/21 11:45:35 by dpoulter         ###   ########.fr       */
+/*  Updated: 2018/08/21 14:59:50 b               |    |  | |  \ |___          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,19 @@ int		check_nb(t_stack *list)
 	return (0);
 }
 
-void	my_basic_algorithm(t_stack **a_head, t_stack **b_head)
+void	my_basic_algorithm(t_stack **a_head, t_stack **b_head, int i)
 {
-	if (sort_list_nb(*a_head, *b_head) != 0)
-	{
-		if (((*a_head) && (*a_head)->next) && (check_nb(*a_head) == 1))
-		{
-			*a_head = swap(*a_head);
-			ft_putendl("sa");
-		}
-		else
-		{
-			*a_head = push(*a_head, b_head);
-			ft_putendl("pb");
-		}
-	}
+	t_stack *a;
+
 	while (sort_list_nb(*a_head, *b_head) != 0)
 	{
-		if (sort_list_nb(*a_head, *b_head) == 2)
+		a = *a_head;
+		if (a->val == i)
+		{
+			*a_head = rotate(*a_head);
+			ft_putendl("ra");
+		}
+		else if (sort_list_nb(*a_head, *b_head) == 2)
 		{
 			if (((*a_head) && (*a_head)->next) && (check_nb(*a_head) == 1))
 			{
