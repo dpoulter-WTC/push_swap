@@ -101,7 +101,6 @@ puts "Begin", list, "\n"
 
 commands.each do |command|
 	if !List.methods.map(&:to_s).include? command
-		puts commands.join(' ')
 		item = 0
 		for item in commands
 			list.send item
@@ -114,7 +113,8 @@ end
 puts "\nFinal", list, "\n"
 
 if list.a == save.a.sort || list.a == save.a.sort.reverse
-	puts $counter
+	print "Moves: ", $counter
+	puts " "
 	puts "[   OK   ]"
 	exit 0
 else

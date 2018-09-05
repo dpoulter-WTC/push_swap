@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*  list_functions.c                 |_|_| |___                               */
+/*  list_functions_pushswap.c        |_|_| |___                               */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 11:45:53 by dpoulter          #+#    #+#             */
-/*  Updated: 2018/08/29 12:57:49 b               |    |  | |  \ |___          */
+/*  Updated: 2018/08/29 16:24:25 b               |    |  | |  \ |___          */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
+#include "../includes/push_swap.h"
 
 t_stack		*remove_front(t_stack *head)
 {
@@ -49,7 +49,7 @@ t_stack		*remove_back(t_stack *head)
 	return (head);
 }
 
-t_stack		*create(int data, t_stack *next)
+t_stack		*create(int data, t_stack *next, int sort)
 {
 	t_stack	*new_stack;
 
@@ -57,11 +57,12 @@ t_stack		*create(int data, t_stack *next)
 	if (new_stack == NULL)
 		error_code(1);
 	new_stack->val = data;
+	new_stack->sort = sort;
 	new_stack->next = next;
 	return (new_stack);
 }
 
-t_stack		*append(t_stack *head, int data)
+t_stack		*append(t_stack *head, int data, int sort)
 {
 	t_stack *cursor;
 	t_stack *new_node;
@@ -69,12 +70,12 @@ t_stack		*append(t_stack *head, int data)
 	cursor = head;
 	while (cursor->next != NULL)
 		cursor = cursor->next;
-	new_node = create(data, NULL);
+	new_node = create(data, NULL, sort);
 	cursor->next = new_node;
 	return (head);
 }
 
-t_stack		*insert_after(t_stack *head, int data, t_stack *prev)
+t_stack		*insert_after(t_stack *head, int data, t_stack *prev, int sort)
 {
 	t_stack *cursor;
 	t_stack *new_node;
@@ -84,7 +85,7 @@ t_stack		*insert_after(t_stack *head, int data, t_stack *prev)
 		cursor = cursor->next;
 	if (cursor != NULL)
 	{
-		new_node = create(data, cursor->next);
+		new_node = create(data, cursor->next, sort);
 		cursor->next = new_node;
 		return (head);
 	}
@@ -92,11 +93,11 @@ t_stack		*insert_after(t_stack *head, int data, t_stack *prev)
 		return (NULL);
 }
 
-t_stack		*insert_begin(t_stack *head, int data)
+t_stack		*insert_begin(t_stack *head, int data, int sort)
 {
 	t_stack *new_node;
 
-	new_node = create(data, head);
+	new_node = create(data, head, sort);
 	head = new_node;
 	return (head);
 }

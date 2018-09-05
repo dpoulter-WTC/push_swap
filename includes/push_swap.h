@@ -6,7 +6,7 @@
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 11:39:58 by dpoulter          #+#    #+#             */
-/*  Updated: 2018/08/21 14:57:29 b               |    |  | |  \ |___          */
+/*  Updated: 2018/09/04 19:29:13 b               |    |  | |  \ |___          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct	s_stack
 {
 	int				val;
+	int				sort;
 	struct s_stack	*next;
 }				t_stack;
 
@@ -31,7 +32,7 @@ t_stack			*append(t_stack *head, int data);
 t_stack			*insert_after(t_stack *head, int data, t_stack *prev);
 t_stack			*insert_begin(t_stack *head, int data);
 int				stack_size(t_stack *head);
-int				median_stack(t_stack *head);
+int				median_stack(t_stack *head, int n);
 
 void			error_code(int status);
 
@@ -40,6 +41,10 @@ t_stack			*push(t_stack *head, t_stack **dst);
 t_stack			*rotate(t_stack *head);
 t_stack			*rrotate(t_stack *head);
 
-void			my_basic_algorithm(t_stack **a_head, t_stack **b_head, int i);
+void			my_basic_algorithm(t_stack **a_head, t_stack **b_head, int i, int median);
+
+void			quicksort(t_stack **a_head, t_stack **b_head, int size, int pile, int n);
+
+void			merge(t_stack *a_head, t_stack *b_head, int median);
 
 #endif

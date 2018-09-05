@@ -6,7 +6,7 @@
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 11:56:40 by dpoulter          #+#    #+#             */
-/*  Updated: 2018/08/21 14:55:37 b               |    |  | |  \ |___          */
+/*  Updated: 2018/09/04 21:17:12 b               |    |  | |  \ |___          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	populate(char **argv, int argc, t_stack *a_head)
 	}
 }
 
-int		median_stack(t_stack *head)
+int		median_stack(t_stack *head, int n)
 {
 	int temp;
 	int size;
@@ -47,10 +47,12 @@ int		median_stack(t_stack *head)
 	int *arr;
 	int j;
 
-	size = stack_size(head);
+	size = n;
+	fprintf(stderr, "here %d \n", n);
+	fflush(stderr);
 	arr = (int *)malloc(sizeof(int) * size);
 	i = 0;
-	while (head)
+	while (head && i < n)
 	{
 		arr[i] = head->val;
 		i++;
@@ -69,7 +71,11 @@ int		median_stack(t_stack *head)
 			}
 	}
 	if (size % 2 == 0)
-		return ((arr[size / 2] + arr[size / 2 - 1]) / 2);
+	{
+		if ((arr[size / 2] + arr[size / 2 - 1]) % 2 == 0)
+			return ((arr[size / 2] + arr[size / 2 - 1]) / 2);
+		return (((arr[size / 2] + arr[size / 2 - 1])  + 1) / 2);
+	}
 	else
 		return (arr[size / 2]);
 }
@@ -94,6 +100,8 @@ int		main(int argc, char **argv)
 			high = a->val;
 		a = a->next;
 	}
-	my_basic_algorithm(&a_head, &b_head, high);
+	//merge(a_head, b_head, median_stack(a_head, stack_size(a_head)));
+	quicksort(&a_head, &b_head, stack_size(a_head), 1, 2);
+	//my_basic_algorithm(&a_head, &b_head, high, median_stack(a_head));
 	return (0);
 }

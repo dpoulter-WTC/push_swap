@@ -22,7 +22,8 @@ SRCS := src/checker.c \
 SRCS2 := src/push_swap.c \
 		src/list_functions.c \
 		src/operations.c \
-		src/algo.c \
+		src/quicksort.c \
+		src/quickalgo.c \
 
 OBJ = $(SRCS:.c=.o)
 OBJ2 = $(SRCS2:.c=.o)

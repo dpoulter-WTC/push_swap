@@ -6,7 +6,7 @@
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 11:44:51 by dpoulter          #+#    #+#             */
-/*  Updated: 2018/08/21 14:59:50 b               |    |  | |  \ |___          */
+/*  Updated: 2018/08/21 21:04:53 b               |    |  | |  \ |___          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,33 @@ int		check_nb(t_stack *list)
 	return (0);
 }
 
-void	my_basic_algorithm(t_stack **a_head, t_stack **b_head, int i)
+int				a_is_sorted(t_stack *a_head)
+{
+	t_stack	*tmp;
+
+	tmp = a_head->next;
+	while (tmp->next != a_head)
+	{
+		if (temp->val > temp->next->val)
+			return (0);
+		val = val->next;
+	}
+	return (1);
+}
+
+void	quicksort(t_stack *a_head, t_stack *b_head)
+{
+	
+}
+
+void	my_basic_algorithm(t_stack **a_head, t_stack **b_head, int i, int median)
 {
 	t_stack *a;
-
+		
 	while (sort_list_nb(*a_head, *b_head) != 0)
 	{
 		a = *a_head;
-		if (a->val == i)
+		if (a->val >= i)
 		{
 			*a_head = rotate(*a_head);
 			ft_putendl("ra");
@@ -57,9 +76,18 @@ void	my_basic_algorithm(t_stack **a_head, t_stack **b_head, int i)
 		else if (sort_list_nb(*a_head, *b_head) == 2)
 		{
 			if (((*a_head) && (*a_head)->next) && (check_nb(*a_head) == 1))
-			{
-				*a_head = swap(*a_head);
-				ft_putendl("sa");
+			{ 
+				if (((*b_head) && (*a_head) && (*b_head)->next) && (check_nb(*b_head) == 0))
+				{
+					*a_head = swap(*a_head);
+					*b_head = swap(*b_head);
+					ft_putendl("ss");
+				}
+				else
+				{
+					*a_head = swap(*a_head);
+					ft_putendl("sa");
+				}
 			}
 			else
 			{

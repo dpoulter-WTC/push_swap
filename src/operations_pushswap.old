@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*  operations.c                     |_|_| |___                               */
+/*  operations_pushswap.c            |_|_| |___                               */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 11:53:26 by dpoulter          #+#    #+#             */
-/*  Updated: 2018/08/29 12:58:45 b               |    |  | |  \ |___          */
+/*  Updated: 2018/08/29 13:01:06 b               |    |  | |  \ |___          */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
+#include "../includes/push_swap.h"
 
 t_stack		*swap(t_stack *head)
 {
 	int i;
 
 	i = head->val;
-	head = insert_after(head, i, head->next);
+	head = insert_after(head, i, head->next, head->sort);
 	head = remove_front(head);
 	return (head);
 }
@@ -30,9 +30,9 @@ t_stack		*push(t_stack *head, t_stack **dst)
 		return (head);
 	i = head->val;
 	if (!*dst)
-		*dst = create(i, NULL);
+		*dst = create(i, NULL, head->sort);
 	else
-		dst[0] = insert_begin(dst[0], i);
+		dst[0] = insert_begin(dst[0], i, head->sort);
 	head = remove_front(head);
 	return (head);
 }
@@ -42,7 +42,7 @@ t_stack		*rotate(t_stack *head)
 	int i;
 
 	i = head->val;
-	head = append(head, i);
+	head = append(head, i, head->sort);
 	head = remove_front(head);
 	return (head);
 }
@@ -56,7 +56,7 @@ t_stack		*rrotate(t_stack *head)
 	while (cursor->next != NULL)
 		cursor = cursor->next;
 	i = cursor->val;
-	head = insert_begin(head, i);
+	head = insert_begin(head, i, head->sort);
 	head = remove_back(head);
 	return (head);
 }
