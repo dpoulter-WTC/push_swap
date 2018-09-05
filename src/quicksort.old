@@ -6,7 +6,7 @@
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 12:29:04 by dpoulter          #+#    #+#             */
-/*   Updated: 2018/09/05 15:17:16 by dpoulter         ###   ########.fr       */
+/*   Updated: 2018/09/05 13:48:10 by dpoulter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ int			median(t_stack *stack, int size)
 	return (tmp->val);
 }
 
-void		quicksort(t_stack ***head, int size, int pile, int n)
+void		quicksort(t_stack **a_head, t_stack **b_head, int size, int pile, int n)
 {
 	int i;
 	int pivot;
@@ -110,21 +110,21 @@ void		quicksort(t_stack ***head, int size, int pile, int n)
 
 	reset = 0;
 	i = 0;
-	pivot = median((pile) ? *(head[0]) : *(head[1]), size);
-	if (is_sorted((pile) ? *(head[0]) : *(head[1]), size, pile))
+	pivot = median((pile) ? *(a_head) : *(b_head), size);
+	if (is_sorted((pile) ? *(a_head) : *(b_head), size, pile))
 		return ;
 	while (size > 3 && i < (size / 2) + (size % 2 && !pile) && ++reset)
-		i += pusher(head[0], head[1], pile, pivot);
+		i += pusher(a_head, b_head, pile, pivot);
 	while ((!n) && (reset--) - i)
-		do_function(&(*head[0]), &(*head[1]), (!pile) ? "rrb" : "rra");
+		do_function(&(*a_head), &(*b_head), (!pile) ? "rrb" : "rra");
 	if (i && !pile)
-		quicksort(&(*head), i, !pile, 0);
+		quicksort(&(*a_head), &(*b_head), i, !pile, 0);
 	if (size - i <= 3)
-		sort3(&(*head[0]), &(*head[1]), size - i, pile);
+		sort3(&(*a_head), &(*b_head), size - i, pile);
 	else
-		quicksort(&(*head), size - i, pile, (n == 2) ? n - 1 : n);
+		quicksort(&(*a_head), &(*b_head), size - i, pile, (n == 2) ? n - 1 : n);
 	if (i && pile)
-		quicksort(&(*head), i, !pile, (n == 2) ? 1 : 0);
+		quicksort(&(*a_head), &(*b_head), i, !pile, (n == 2) ? 1 : 0);
 	while (i--)
-		do_function(&(*head[0]), &(*head[1]), (pile) ? "pa" : "pb");
+		do_function(&(*a_head), &(*b_head), (pile) ? "pa" : "pb");
 }

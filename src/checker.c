@@ -6,7 +6,7 @@
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 11:54:52 by dpoulter          #+#    #+#             */
-/*   Updated: 2018/08/21 11:56:31 by dpoulter         ###   ########.fr       */
+/*   Updated: 2018/09/05 12:04:59 by dpoulter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,32 @@ void	populate(char **argv, int argc, t_stack *a_head)
 	}
 }
 
+void	compare(char *line, t_stack **a_head, t_stack **b_head)
+{
+	if (ft_strcmp(line, "pa") == 0)
+		*b_head = push(*b_head, &(*a_head));
+	if (ft_strcmp(line, "pb") == 0)
+		*a_head = push(*a_head, &(*b_head));
+	if (ft_strcmp(line, "ra") == 0)
+		*a_head = rotate(*a_head);
+	if (ft_strcmp(line, "rb") == 0)
+		*b_head = rotate(*b_head);
+	if (ft_strcmp(line, "rr") == 0)
+	{
+		*a_head = rotate(*a_head);
+		*b_head = rotate(*b_head);
+	}
+	if (ft_strcmp(line, "rra") == 0)
+		*a_head = rrotate(*a_head);
+	if (ft_strcmp(line, "rrb") == 0)
+		*b_head = rrotate(*b_head);
+	if (ft_strcmp(line, "rrr") == 0)
+	{
+		*a_head = rrotate(*a_head);
+		*b_head = rrotate(*b_head);
+	}
+}
+
 int		main(int argc, char **argv)
 {
 	char	*line;
@@ -89,28 +115,7 @@ int		main(int argc, char **argv)
 			a_head = swap(a_head);
 			b_head = swap(b_head);
 		}
-		if (ft_strcmp(line, "pa") == 0)
-			b_head = push(b_head, &a_head);
-		if (ft_strcmp(line, "pb") == 0)
-			a_head = push(a_head, &b_head);
-		if (ft_strcmp(line, "ra") == 0)
-			a_head = rotate(a_head);
-		if (ft_strcmp(line, "rb") == 0)
-			b_head = rotate(b_head);
-		if (ft_strcmp(line, "rr") == 0)
-		{
-			a_head = rotate(a_head);
-			b_head = rotate(b_head);
-		}
-		if (ft_strcmp(line, "rra") == 0)
-			a_head = rrotate(a_head);
-		if (ft_strcmp(line, "rrb") == 0)
-			b_head = rrotate(b_head);
-		if (ft_strcmp(line, "rrr") == 0)
-		{
-			a_head = rrotate(a_head);
-			b_head = rrotate(b_head);
-		}
+		compare(line, &a_head, &b_head);
 	}
 	check_sorted(a_head, b_head);
 	return (0);

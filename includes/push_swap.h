@@ -43,8 +43,7 @@ t_stack			*rrotate(t_stack *head);
 
 void			my_basic_algorithm(t_stack **a_head, t_stack **b_head, int i, int median);
 
-void			quicksort(t_stack **a_head, t_stack **b_head, int size, int pile, int n);
-
-void			merge(t_stack *a_head, t_stack *b_head, int median);
+void			quicksort(t_stack ***head, int size, int pile, int n);
+void			do_function(t_stack **a_head, t_stack **b_head, char *line);
 
 #endif

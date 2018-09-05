@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*  list_functions.c                 |_|_| |___                               */
+/*   list_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/21 11:45:53 by dpoulter          #+#    #+#             */
-/*  Updated: 2018/08/29 12:57:49 b               |    |  | |  \ |___          */
+/*   Created: 2018/09/05 13:40:27 by dpoulter          #+#    #+#             */
+/*   Updated: 2018/09/05 13:40:28 by dpoulter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,26 +90,4 @@ t_stack		*insert_after(t_stack *head, int data, t_stack *prev)
 	}
 	else
 		return (NULL);
-}
-
-t_stack		*insert_begin(t_stack *head, int data)
-{
-	t_stack *new_node;
-
-	new_node = create(data, head);
-	head = new_node;
-	return (head);
-}
-
-int			stack_size(t_stack *head)
-{
-	int i;
-
-	i = 0;
-	while (head)
-	{
-		i++;
-		head = head->next;
-	}
-	return (i);
 }
