@@ -10,16 +10,9 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = checker
+NAME1 = checker
 NAME2 = push_swap
-
-DIR_LIB = libft/
-
-FLAGS = -Wall -Werror -Wextra -g
-
-GCC_HELPER = gcc $(FLAGS)
-
-SRCS := src/checker.c \
+SRCS1 := src/checker.c \
 		src/list_functions.c \
 		src/list_functions2.c \
 		src/operations.c \
@@ -30,29 +23,41 @@ SRCS2 := src/push_swap.c \
 		src/operations.c \
 		src/quicksort.c \
 
-OBJ = $(SRCS:.c=.o)
-OBJ2 = $(SRCS2:.c=.o)
+SRCS3 = $(wildcard $(SRCS1))
+SRCS4 = $(wildcard $(SRCS2))
+BINS1 = $(patsubst src/%.c, %.o, $(SRCS3))
+BINS2 = $(patsubst src/%.c, %.o, $(SRCS4))
+FLAGS = -g -Wall -Wextra -Werror
+LIBFT = ./libft/libft.a
 
-all : $(NAME) $(NAME2)
+.PHONY: all clean fclean
 
-$(NAME): $(OBJ)
-	@make -C libft
-	$(GCC_HELPER) $(OBJ) -Iincludes -Ilibft/ -L $(DIR_LIB) -lft -o $(NAME)
-	@echo "Checker done"
+%.o : libft/src/%.c
+	gcc -Ilibft/includes $(FLAGS) -c $<
 
-$(NAME2): $(OBJ2)
-	@make -C libft
-	$(GCC_HELPER) $(OBJ2) -Iincludes -Ilibft/ -L $(DIR_LIB) -lft -o $(NAME2)
-	@echo "Push_swap done"
+%.o : src/%.c
+	gcc -Iincludes -Ilibft/includes $(FLAGS) -c $<
+
+all: libft $(NAME1) $(NAME2)
+
+libft: $(LIBFT)
+
+$(LIBFT):
+	make -C ./libft
+
+$(NAME1): $(LIBFT) $(BINS)
+	gcc -Iincludes -Ilibft/includes $(FLAGS) $(LIBFT) $(SRCS3) -o $(NAME1)
+
+$(NAME2): $(LIBFT) $(BINS)
+	gcc -Iincludes -Ilibft/includes $(FLAGS) $(LIBFT) $(SRCS4) -o $(NAME2)
 
 clean:
-	@make clean -C libft
-	@rm -f $(OBJ)
-	@rm -f $(OBJ2)
+	make clean -C ./libft
+	/bin/rm -f $(BINS1)
+	/bin/rm -f $(BINS2)
 
 fclean: clean
-	@make fclean -C libft
-	@rm -f $(NAME)
-	@rm -f $(NAME2)
+	make fclean -C ./libft
+	/bin/rm -f $(NAME)
 
 re: fclean all

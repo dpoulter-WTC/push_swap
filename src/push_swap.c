@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*  push_swap.c                      |_|_| |___                               */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 12:27:04 by dpoulter          #+#    #+#             */
-/*   Updated: 2018/09/05 15:34:49 by dpoulter         ###   ########.fr       */
+/*  Updated: 2018/09/06 11:01:58 b               |    |  | |  \ |___          */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,10 @@ void	populate(char **argv, int argc, t_stack *a_head)
 		while (split[++j])
 		{
 			a_head = append(a_head, ft_atoi(split[j]));
-			if (j > 0)
-				ft_strdel(&split[j]);
+			ft_strdel(&split[j]);
 		}
-		ft_strdel(&split[0]);
-		//ft_strdel(&split[j + 1]);
+		free(split);
 	}
-	free(split);
 }
 
 void	do_function(t_stack **a_head, t_stack **b_head, char *line)
@@ -80,6 +77,7 @@ int		main(int argc, char **argv)
 	head[0] = &a_head;
 	head[1] = &b_head;
 	quicksort(head, stack_size(a_head), 1, 2);
-	exit(0);
+	while (1)
+		;
 	return (0);
 }

@@ -6,14 +6,14 @@
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/21 11:39:58 by dpoulter          #+#    #+#             */
-/*  Updated: 2018/09/04 19:29:13 b               |    |  | |  \ |___          */
+/*  Updated: 2018/09/05 17:41:35 b               |    |  | |  \ |___          */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/libft.h"
+# include "../libft/includes/libft.h"
 
 # define RED "\x1B[31m"
 # define WHITE "\x1B[37m"
