@@ -82,6 +82,7 @@ t_stack		*insert_after(t_stack *head, int data, t_stack *prev)
 	cursor = head;
 	while (cursor != prev)
 		cursor = cursor->next;
+	new_node = NULL;
 	if (cursor != NULL)
 	{
 		new_node = create(data, cursor->next);
@@ -89,5 +90,7 @@ t_stack		*insert_after(t_stack *head, int data, t_stack *prev)
 		return (head);
 	}
 	else
+	{
 		return (NULL);
+	}
 }

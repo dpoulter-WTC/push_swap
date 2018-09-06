@@ -77,7 +77,6 @@ int		main(int argc, char **argv)
 	head[0] = &a_head;
 	head[1] = &b_head;
 	quicksort(head, stack_size(a_head), 1, 2);
-	while (1)
-		;
+	free(head);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/05 11:54:26 by dpoulter          #+#    #+#             */
-/*   Updated: 2018/09/05 15:39:24 by dpoulter         ###   ########.fr       */
+/*   Updated: 2018/09/06 11:42:58 by dpoulter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ t_stack		*swap(t_stack *head)
 	int i;
 
 	i = head->val;
-	head = insert_after(head, i, head->next);
-	head = remove_front(head);
+	head->val = head->next->val;
+	head->next->val = i;
 	return (head);
 }
 

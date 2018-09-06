@@ -62,7 +62,9 @@ void	populate(char **argv, int argc, t_stack *a_head)
 		while (split[++j])
 		{
 			a_head = append(a_head, ft_atoi(split[j]));
+			ft_strdel(&split[j]);
 		}
+		free(split);
 	}
 }
 
@@ -115,6 +117,7 @@ int		main(int argc, char **argv)
 			b_head = swap(b_head);
 		}
 		compare(line, &a_head, &b_head);
+		free(line);
 	}
 	check_sorted(a_head, b_head);
 	return (0);

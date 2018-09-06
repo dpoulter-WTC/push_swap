@@ -6,7 +6,7 @@
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 13:11:41 by dpoulter          #+#    #+#             */
-/*   Updated: 2018/07/13 13:11:43 by dpoulter         ###   ########.fr       */
+/*   Updated: 2018/09/06 12:08:56 by dpoulter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int			ft_gnl(const int fd, char **line)
 	i = ft_gnl2((char*)(buf[fd]), &*line, &ret, fd);
 	if (ft_strlen(*line) > 0 || i == 1)
 		return (1);
+	free(*line);
 	return (ret);
 }
