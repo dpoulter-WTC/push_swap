@@ -6,7 +6,7 @@
 #    By: dpoulter <daniel@poulter.co.za>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/08 10:08:35 by dpoulter          #+#    #+#              #
-#    Updated: 2018/09/05 16:18:02 by dpoulter         ###   ########.fr        #
+#    Updated: 2018/09/06 12:18:28 by dpoulter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRCS3 = $(wildcard $(SRCS1))
 SRCS4 = $(wildcard $(SRCS2))
 BINS1 = $(patsubst src/%.c, %.o, $(SRCS3))
 BINS2 = $(patsubst src/%.c, %.o, $(SRCS4))
-FLAGS = -g -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 LIBFT = ./libft/libft.a
 
 .PHONY: all clean fclean
@@ -58,6 +58,7 @@ clean:
 
 fclean: clean
 	make fclean -C ./libft
-	/bin/rm -f $(NAME)
+	/bin/rm -f $(NAME1)
+	/bin/rm -f $(NAME2)
 
 re: fclean all
