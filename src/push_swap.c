@@ -6,7 +6,7 @@
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/06 12:14:27 by dpoulter          #+#    #+#             */
-/*   Updated: 2018/09/06 12:14:29 by dpoulter         ###   ########.fr       */
+/*   Updated: 2018/09/06 13:23:49 by dpoulter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ void	error_code(int status)
 	ft_putstr_fd(RED, 2);
 	if (status == 0)
 		ft_putstr_fd("Error: Incorrect usage of ./push_swap\n", 2);
+	if (status == 2)
+		ft_putstr_fd("Error: Arguments incorrect\n", 2);
+	if (status == 4)
+		ft_putstr_fd("Error: MAX INT\n", 2);
 	ft_putstr_fd(WHITE, 2);
 	exit(1);
 }
@@ -26,6 +30,7 @@ void	populate(char **argv, int argc, t_stack *a_head)
 	int		i;
 	int		j;
 	char	**split;
+	int		k;
 
 	i = 0;
 	while (++i < argc)
@@ -34,11 +39,18 @@ void	populate(char **argv, int argc, t_stack *a_head)
 		split = ft_strsplit(argv[i], ' ');
 		while (split[++j])
 		{
+			k = -1;
+			while (split[j][++k])
+				if (!ft_isdigit(split[j][k]))
+					error_code(2);
+			if (ft_long_atoi(split[j]) > MAX_INT)
+				error_code(4);
 			a_head = append(a_head, ft_atoi(split[j]));
 			ft_strdel(&split[j]);
 		}
 		free(split);
 	}
+	check_dupe(a_head);
 }
 
 void	do_function(t_stack **a_head, t_stack **b_head, char *line)

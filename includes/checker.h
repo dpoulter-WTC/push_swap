@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*  checker.h                        |_|_| |___                               */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/21 11:38:47 by dpoulter          #+#    #+#             */
-/*  Updated: 2018/09/05 17:27:49 b               |    |  | |  \ |___          */
+/*   Created: 2018/09/06 13:20:16 by dpoulter          #+#    #+#             */
+/*   Updated: 2018/09/06 13:20:18 by dpoulter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # define RED "\x1B[31m"
 # define WHITE "\x1B[37m"
+# define MAX_INT 2147483647
 
 typedef struct	s_stack
 {
@@ -32,6 +33,8 @@ t_stack			*insert_after(t_stack *head, int data, t_stack *prev);
 t_stack			*insert_begin(t_stack *head, int data);
 
 void			error_code(int status);
+void			recieve(t_stack **a_head, t_stack **b_head, char *line);
+void			check_dupe(t_stack *head);
 
 t_stack			*swap(t_stack *head);
 t_stack			*push(t_stack *head, t_stack **dst);

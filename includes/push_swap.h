@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*  push_swap.h                      |_|_| |___                               */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/08/21 11:39:58 by dpoulter          #+#    #+#             */
-/*  Updated: 2018/09/05 17:41:35 b               |    |  | |  \ |___          */
+/*   Created: 2018/09/06 13:20:24 by dpoulter          #+#    #+#             */
+/*   Updated: 2018/09/06 13:26:31 by dpoulter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # define RED "\x1B[31m"
 # define WHITE "\x1B[37m"
+# define MAX_INT 2147483647
 
 typedef struct	s_stack
 {
@@ -35,13 +36,12 @@ int				stack_size(t_stack *head);
 int				median_stack(t_stack *head, int n);
 
 void			error_code(int status);
+void			check_dupe(t_stack *head);
 
 t_stack			*swap(t_stack *head);
 t_stack			*push(t_stack *head, t_stack **dst);
 t_stack			*rotate(t_stack *head);
 t_stack			*rrotate(t_stack *head);
-
-void			my_basic_algorithm(t_stack **a_head, t_stack **b_head, int i, int median);
 
 void			quicksort(t_stack ***head, int size, int pile, int n);
 void			do_function(t_stack **a_head, t_stack **b_head, char *line);

@@ -65,6 +65,7 @@ SRC		= ft_memset.c \
 				ft_lstmap.c \
 				ft_gnl.c \
 				ft_ab.c \
+				ft_long_atoi.c \
 
 OBJ = $(SRC:.c=.o)
 

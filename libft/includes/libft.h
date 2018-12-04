@@ -6,7 +6,7 @@
 /*   By: dpoulter <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/23 11:06:49 by dpoulter          #+#    #+#             */
-/*   Updated: 2018/07/16 14:07:37 by dpoulter         ###   ########.fr       */
+/*   Updated: 2018/09/06 12:47:40 by dpoulter         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ char			*ft_strndup(const char *s1, size_t n);
 int				ft_countwords(char const *str, char c);
 int				ft_gnl(const int fd, char **line);
 int				ab(int i);
+long int		ft_long_atoi(const char *str);
 
 #endif

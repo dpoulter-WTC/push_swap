@@ -6,18 +6,20 @@
 #    By: dpoulter <daniel@poulter.co.za>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/08 10:08:35 by dpoulter          #+#    #+#              #
-#    Updated: 2018/09/06 12:18:28 by dpoulter         ###   ########.fr        #
+#    Updated: 2018/09/06 13:25:57 by dpoulter         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME1 = checker
 NAME2 = push_swap
 SRCS1 := src/checker.c \
+		src/checker2.c \
 		src/list_functions.c \
 		src/list_functions2.c \
 		src/operations.c \
 
 SRCS2 := src/push_swap.c \
+		src/checker2.c \
 		src/list_functions.c \
 		src/list_functions2.c \
 		src/operations.c \
